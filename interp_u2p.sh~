@@ -1,0 +1,8 @@
+#!/bin/bash
+# This script interpolates a quantity from the u-points to the p-points, extrapolating at the boundaries
+
+meta="rhopoto_tm2001-2010.nc"
+ifile="uko_tm2010.nc"
+ofile="uko_p_tm2010.nc"
+
+/pf/zmaw/m214003/local/bin/cdo -setgrid,$meta -mulc,0.5 -add -shiftx,-1,cyclic $ifile $ifile $ofile

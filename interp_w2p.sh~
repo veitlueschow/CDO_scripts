@@ -1,0 +1,10 @@
+#!/bin/bash
+# This script interpolates a quantity from the p-points to the w-points, extrapolating at the boundaries
+
+meta="rhopoto_tm.nc"
+ifile="wo_tm2001-2010.nc"
+ofile="wo_p_tm2001-2010.nc"
+lvl=$(cdo showlevel $meta | tr " " ",")
+lvls=${lvl:1:600}
+#echo $lvls
+cdo intlevel,$lvls $ifile $ofile
